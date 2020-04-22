@@ -1,1 +1,0 @@
-koireaderAPIip = "http://34.211.44.68:8081/ocr2"
