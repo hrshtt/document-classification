@@ -27,20 +27,14 @@ if __name__ == "__main__":
         for j, _ in enumerate(all_text_list[class_]):
             all_text_list_clean[class_].append(preprocess_text(all_text_list[class_][j]))
     
-    #first 45 documents of each class as train set
-    train_text = ''
-    for i, class_ in enumerate(all_text_list_clean):
-            for value in all_text_list_clean[class_][0:45]:
+    #saving text as minimal processed doc
+    all_text = ''
+    for class_ in all_text_list_clean:
+            for value in all_text_list_clean[class_]:
                 if value.strip()!= '':
-                    train_text += f'__label__{i} {value}\n'
-    with open('./data/train_text.txt', 'w') as f:
-        f.write(train_text.strip())
+                    all_text += f'__label__{class_} {value}\n'
+                    # all_text += f'{value}\n'
 
-    #rest of the documents of each class as test set
-    test_text = '\n'
-    for i, class_ in enumerate(all_text_list_clean):
-            for value in all_text_list_clean[class_][45:]:
-                if value.strip()!= '':
-                    test_text += f'__label__{i} {value}\n'
-    with open('./data/test_text.txt', 'w') as f:
-        f.write(test_text.strip())
+    with open('./data/raw_text.txt', 'w') as f:
+        f.write(all_text.strip())
+
