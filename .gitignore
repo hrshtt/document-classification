@@ -1,4 +1,4 @@
 *.bin
 ocr_koireader_ip.py
 __pycache__
-data/*.txt
+*.txt
